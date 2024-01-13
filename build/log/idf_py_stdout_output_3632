@@ -1,0 +1,25 @@
+[1/9] Performing build step for 'bootloader'
+[1/1] cmd.exe /C "cd /D D:\VScode\LORA\ESP32_LORA\build\bootloader\esp-idf\esptool_py && c:\esp\tools\python_env\idf5.0_py3.8_env\Scripts\python.exe C:/esp/esp-idf/components/partition_table/check_sizes.py --offset 0x8000 bootloader 0x1000 D:/VScode/LORA/ESP32_LORA/build/bootloader/bootloader.bin"
+Bootloader binary size 0x6720 bytes. 0x8e0 bytes (8%) free.
+[2/7] Building C object esp-idf/main/CMakeFiles/__idf_main.dir/http_sever_app.c.obj
+D:/VScode/LORA/ESP32_LORA/main/http_sever_app.c: In function 'http_sever_configure':
+D:/VScode/LORA/ESP32_LORA/main/http_sever_app.c:135:55: warning: passing argument 2 of 'httpd_register_uri_handler' from incompatible pointer type [-Wincompatible-pointer-types]
+  135 |         httpd_register_uri_handler(http_sever_handle, &style_css_handler);
+      |                                                       ^~~~~~~~~~~~~~~~~~
+      |                                                       |
+      |                                                       esp_err_t (*)(httpd_req_t *) {aka int (*)(struct httpd_req *)}
+In file included from D:/VScode/LORA/ESP32_LORA/main/http_sever_app.c:16:
+C:/esp/esp-idf/components/esp_http_server/include/esp_http_server.h:509:57: note: expected 'const httpd_uri_t *' {aka 'const struct httpd_uri *'} but argument is of type 'esp_err_t (*)(httpd_req_t *)' {aka 'int (*)(struct httpd_req *)'}
+  509 |                                      const httpd_uri_t *uri_handler);
+      |                                      ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+D:/VScode/LORA/ESP32_LORA/main/http_sever_app.c:129:21: warning: unused variable 'style_css' [-Wunused-variable]
+  129 |         httpd_uri_t style_css = {
+      |                     ^~~~~~~~~
+[3/7] Linking C static library esp-idf\main\libmain.a
+[4/7] Generating ld/sections.ld
+[5/7] Linking CXX executable ESP32_LORA.elf
+FAILED: ESP32_LORA.elf 
+cmd.exe /C "cd . && C:\esp\tools\tools\xtensa-esp32-elf\esp-2022r1-11.2.0\xtensa-esp32-elf\bin\xtensa-esp32-elf-g++.exe -mlongcalls -Wno-frame-address  @CMakeFiles\ESP32_LORA.elf.rsp -o ESP32_LORA.elf  && cd ."
+c:/esp/tools/tools/xtensa-esp32-elf/esp-2022r1-11.2.0/xtensa-esp32-elf/bin/../lib/gcc/xtensa-esp32-elf/11.2.0/../../../../xtensa-esp32-elf/bin/ld.exe: esp-idf/main/libmain.a(http_sever_app.c.obj):(.literal.style_css_handler+0xc): undefined reference to `_binary_style_css_start_start'
+collect2.exe: error: ld returned 1 exit status
+ninja: build stopped: subcommand failed.
